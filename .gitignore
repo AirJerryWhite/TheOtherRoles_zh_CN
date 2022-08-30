@@ -358,5 +358,7 @@ Desktop.ini
 .build
 tools
 
+./TheOtherRoles/bin/*
 Among Us/*.*
 Among Us/*/*
+dotnet.bat
