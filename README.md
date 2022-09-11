@@ -9,15 +9,14 @@ This mod is not affiliated with Among Us or Innersloth LLC, and the content cont
 
 
 # The Other Roles
-
-The **The Other Roles**, is a mod for [Among Us](https://store.steampowered.com/app/945360/Among_Us) which adds many new roles, new [Settings](#settings) and new [Custom Hats](#custom-hats) to the game.
-Even more roles are coming soon. :)
+**The Other Roles** 是 [Among Us](https://store.steampowered.com/app/945360/Among_Us) 的一个给游戏添加了大量新职业，新的 [设置](#settings) 和新的 [自定义帽子](#custom-hats) 的 mod。
+更多的职业将会被推出。 :)
 
 | 内鬼 | 船员 | 中立 | 特性 |
 |----------|-------------|-----------------|----------------|
-| [教父 (Mafia)](#mafia) | [交换师](#shifter) | [小丑](#jester) | [败血病](#bloody) |
-| [黑手党 (Mafia)](#mafia) | [市长](#mayor) | [纵火犯](#arsonist) | [晕传者](#anti-teleport) |
-| [搬运工 (Mafia)](#mafia) | [工程师](#engineer) | [豺狼](#jackal) | [破平者](#tie-breaker) |
+| [教父 (黑手党)](#mafia) | [交换师](#shifter) | [小丑](#jester) | [败血病](#bloody) |
+| [黑手党成员 (黑手党)](#mafia) | [市长](#mayor) | [纵火犯](#arsonist) | [晕传者](#anti-teleport) |
+| [守门人 (黑手党)](#mafia) | [工程师](#engineer) | [豺狼](#jackal) | [破平者](#tie-breaker) |
 | [化形者](#morphling) | [警长](#sheriff) | [跟班](#sidekick) | [诱饵](#bait) |
 | [伪装者](#camouflager) | [警员](#deputy) | [秃鹫](#vulture) | [恋人](#lovers) |
 | [吸血鬼](#vampire) | [执灯人](#lighter) | [律师](#lawyer) | [墨镜](#sunglasses) |
@@ -35,7 +34,8 @@ Even more roles are coming soon. :)
 |  | [通灵师](#medium) |  |  |
 |  | [正义赌怪](#guesser) |  |
 
-The [Role Assignment](#role-assignment) sections explains how the roles are being distributed among the players.
+[职业分配](#role-assignment) 部分将解释职业将如何分配给玩家。
+
 
 # Releases
 | Among Us - Version| Mod Version | Link |
@@ -753,15 +753,15 @@ Here are a few instructions, on how to create a custom hat:
 
 - **Submission:** If you got a hat design, you can submit it on our [Discord server](https://discord.gg/77RkMJHWsM). We'll look at all the hats and add all the good ones to the game.
 
-# Colors
+# 颜色
 ![TOR Colors](./Images/TOR_colors.jpg)
 
-# Roles
+# 职业
 
-## Role Assignment
+## 职业分配
 
-First you need to choose how many special roles of each kind (Impostor/Neutral/Crewmate) you want in the game.
-The count you set will only be reached, if there are enough Crewmates/Impostors in the game and if enough roles are set to be in the game (i.e. they are set to > 0%). The roles are then being distributed as follows:
+首先你需要选择有多少名不同种类的 职业 (内鬼/中立/船员) 将会存在游戏中。
+The count you set will only be reached, if there are enough Crewmates/Impostors in the game and if enough roles are set to be in the game (i.e. they are set to > 0%).职业分配如下：
 - First all roles that are set to 100% are being assigned to arbitrary players.
 - After that each role that has 10%-90% selected adds 1-9 tickets to a ticket pool (there exists a ticket pool for Crewmates, Neutrals and Impostors). Then the roles will be selected randomly from the pools as long it's possible (until the selected number is reached, until there are no more Crewmates/Impostors or until there are no more tickets). If a role is selected from the pool, obviously all the tickets of that role are being removed.
 - The Mafia, Lovers and Mini are being selected independently (without using the ticket system) according to the spawn chance you selected. After that the Crewmate, Neutral and Impostor roles are selected and assigned in a random order.
@@ -772,21 +772,21 @@ Result: Snitch is assigned, then one role out of the pool [Hacker, Tracker, Trac
 Note: Changing the settings to Hacker: 20%, Tracker: 60% would statistically result in the same outcome .
 
 
-## Mafia
-### **Team: Impostors**
-The Mafia are a group of three Impostors.\
-The Godfather works like a normal Impostor.\
-The Mafioso is an Impostor who cannot kill until the Godfather is dead.\
-The Janitor is an Impostor who cannot kill, but they can hide dead bodies instead.\
+## 黑手党
+### **所属阵营: 内鬼**
+黑手党由三名内鬼组成。\
+教父的职责与正常的内鬼相同。\
+黑手党成员直到教父死亡后才可以杀人。\
+守门人不能击杀，但它可以隐藏尸体。\
 \
-**NOTE:**
-- There have to be 3 Impostors activated for the mafia to spawn.
+**注释：**
+- 仅当存在三名内鬼时黑手党团体才可以存在
 
-### Game Options
-| Name | Description |
+### 游戏设置
+| 名称 | 介绍 |
 |----------|:-------------:|
-| Mafia Spawn Chance | -
-| Janitor Cooldown | -
+| 黑手党出现概率 | -
+| 守门人技能冷却 | -
 -----------------------
 
 ## Morphling
