@@ -10,6 +10,7 @@ This mod is not affiliated with Among Us or Innersloth LLC, and the content cont
 
 # The Other Roles
 **The Other Roles** 是 [Among Us](https://store.steampowered.com/app/945360/Among_Us) 的一个给游戏添加了大量新职业，新的 [设置](#settings) 和新的 [自定义帽子](#custom-hats) 的 mod。
+
 更多的职业将会被推出。 :)
 
 | 内鬼 | 船员 | 中立 | 特性 |
