@@ -306,7 +306,7 @@ namespace TheOtherRoles {
             modifiersCountMax = CustomOption.Create(307, Types.General, cs(new Color(204f / 255f, 204f / 255f, 0, 1f), "最大特性数量"), 15f, 0f, 15f, 1f);
 
             mafiaSpawnRate = CustomOption.Create(10, Types.Impostor, cs(Janitor.color, "黑手党"), rates, null, true);
-            janitorCooldown = CustomOption.Create(11, Types.Impostor, "搬运技能冷却", 30f, 10f, 60f, 2.5f, mafiaSpawnRate);
+            janitorCooldown = CustomOption.Create(11, Types.Impostor, "守门人技能冷却", 30f, 10f, 60f, 2.5f, mafiaSpawnRate);
 
             morphlingSpawnRate = CustomOption.Create(20, Types.Impostor, cs(Morphling.color, "化形者"), rates, null, true);
             morphlingCooldown = CustomOption.Create(21, Types.Impostor, "化形技能冷却", 30f, 10f, 60f, 2.5f, morphlingSpawnRate);

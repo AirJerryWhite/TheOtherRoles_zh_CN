@@ -34,8 +34,8 @@ namespace TheOtherRoles
         public static RoleInfo deputy = new RoleInfo("警员", Sheriff.color, "铐住 <color=#FF1919FF>内鬼</color>", "你可以使用手铐禁用某人的技能一段时间", RoleId.Deputy);
         public static RoleInfo lighter = new RoleInfo("执灯人", Lighter.color, "灯火永存", "你的灯光不会熄灭", RoleId.Lighter);
         public static RoleInfo godfather = new RoleInfo("教父", Godfather.color, "杀害所有的船员", "杀害所有的船员", RoleId.Godfather);
-        public static RoleInfo mafioso = new RoleInfo("黑手党", Mafioso.color, "和 <color=#FF1919FF>搬运工</color> 一起杀害船员", "杀害所有船员", RoleId.Mafioso);
-        public static RoleInfo janitor = new RoleInfo("搬运工", Janitor.color, "替 <color=#FF1919FF>黑手党</color> 毁尸灭迹", "在别人报警前把尸体转移", RoleId.Janitor);
+        public static RoleInfo mafioso = new RoleInfo("黑手党成员", Mafioso.color, "和 <color=#FF1919FF>搬运工</color> 一起杀害船员", "杀害所有船员", RoleId.Mafioso);
+        public static RoleInfo janitor = new RoleInfo("搬运工", Janitor.color, "为 <color=#FF1919FF>黑手党成员</color> 毁尸灭迹", "在别人报警前把尸体转移", RoleId.Janitor);
         public static RoleInfo morphling = new RoleInfo("化形者", Morphling.color, "你可以伪装他人来栽赃陷害", "你可以伪装他人来栽赃陷害", RoleId.Morphling);
         public static RoleInfo camouflager = new RoleInfo("伪装者", Camouflager.color, "伪装并击杀船员", "你可以隐蔽在人群之中", RoleId.Camouflager);
         public static RoleInfo vampire = new RoleInfo("吸血鬼", Vampire.color, "将你的敌人吸成肉干", "将你的敌人吸成肉干", RoleId.Vampire);
