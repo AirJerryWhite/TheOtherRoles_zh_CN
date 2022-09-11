@@ -761,16 +761,16 @@ Here are a few instructions, on how to create a custom hat:
 ## 职业分配
 
 首先你需要选择有多少名不同种类的 职业 (内鬼/中立/船员) 将会存在游戏中。
-The count you set will only be reached, if there are enough Crewmates/Impostors in the game and if enough roles are set to be in the game (i.e. they are set to > 0%).职业分配如下：
-- First all roles that are set to 100% are being assigned to arbitrary players.
-- After that each role that has 10%-90% selected adds 1-9 tickets to a ticket pool (there exists a ticket pool for Crewmates, Neutrals and Impostors). Then the roles will be selected randomly from the pools as long it's possible (until the selected number is reached, until there are no more Crewmates/Impostors or until there are no more tickets). If a role is selected from the pool, obviously all the tickets of that role are being removed.
-- The Mafia, Lovers and Mini are being selected independently (without using the ticket system) according to the spawn chance you selected. After that the Crewmate, Neutral and Impostor roles are selected and assigned in a random order.
+仅有足够的船员/内鬼在场并且设置了足够的职业数量(即它们的出现概率设置大于0)，你所设置职业上限才会满足。
+职业分配规则如下：
+- 首先所有出现概率为100%的职业将会优先被分配给随机玩家。
+- 然后其他出现概率在10%-90%间的职业将会获得 1-9张 的票 到职业池中（船员、中立和内鬼均拥有一个自己的抽签箱）。接着职业将会随机从职业池中抽取。（直到达到预定的数值，或 职业池被耗尽。）。当一个职业被从职业池中选出，它在职业池中所拥有的票都会被移除。
+- 黑手党，恋人和迷你船员将使用独立的概率进行分配（不会使用职业池），之后船员、中立和内鬼职业将会随机选择并分配。
 
-**Example:**\
-Settings: 2 special Crewmate roles, Snitch: 100%, Hacker: 10%, Tracker: 30%\
-Result: Snitch is assigned, then one role out of the pool [Hacker, Tracker, Tracker, Tracker] is being selected\
-Note: Changing the settings to Hacker: 20%, Tracker: 60% would statistically result in the same outcome .
-
+**例子：**\
+设置： 两个特殊船员职业, 告密者: 100%, 黑客: 10%, 追踪者: 30%\
+结果： 告密者将会被随机分配给玩家, 另外一个职业将从 [黑客, 追踪者, 追踪者, 追踪者] 中选出。\
+注释： 将设置更改为 黑客: 20%, 追踪者: 60% 将会在统计学上获得相同的结果。
 
 ## 黑手党
 ### **所属阵营: 内鬼**
@@ -780,7 +780,7 @@ Note: Changing the settings to Hacker: 20%, Tracker: 60% would statistically res
 守门人不能击杀，但它可以隐藏尸体。\
 \
 **注释：**
-- 仅当存在三名内鬼时黑手党团体才可以存在
+- 仅当满足三名内鬼存在于这场游戏中时黑手党团体才可以存在
 
 ### 游戏设置
 | 名称 | 介绍 |
