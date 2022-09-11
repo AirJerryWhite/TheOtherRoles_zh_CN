@@ -13,27 +13,27 @@ This mod is not affiliated with Among Us or Innersloth LLC, and the content cont
 The **The Other Roles**, is a mod for [Among Us](https://store.steampowered.com/app/945360/Among_Us) which adds many new roles, new [Settings](#settings) and new [Custom Hats](#custom-hats) to the game.
 Even more roles are coming soon. :)
 
-| Impostors | Crewmates | Neutral | Modifier |
+| 内鬼 | 船员 | 中立 | 特性 |
 |----------|-------------|-----------------|----------------|
-| [Godfather (Mafia)](#mafia) | [Shifter](#shifter) | [Jester](#jester) | [Bloody](#bloody) |
-| [Mafioso (Mafia)](#mafia) | [Mayor](#mayor) | [Arsonist](#arsonist) | [Anti Teleport](#anti-teleport) |
-| [Janitor (Mafia)](#mafia) | [Engineer](#engineer) | [Jackal](#jackal) | [Tie Breaker](#tie-breaker) |
-| [Morphling](#morphling) | [Sheriff](#sheriff) | [Sidekick](#sidekick) | [Bait](#bait) |
-| [Camouflager](#camouflager) | [Deputy](#deputy) | [Vulture](#vulture) | [Lovers](#lovers) |
-| [Vampire](#vampire) | [Lighter](#lighter) | [Lawyer](#lawyer) | [Sunglasses](#sunglasses) |
-| [Eraser](#eraser) | [Detective](#detective) | | [Mini](#mini) |
-| [Trickster](#trickster) | [Time Master](#time-master) | | [VIP](#vip) |
-| [Cleaner](#cleaner) | [Medic](#medic) |  | [Invert](#invert) |
-| [Warlock](#warlock) | [Swapper](#swapper) |
-| [Bounty Hunter](#bounty-hunter) | [Seer](#seer) |  |
-| [Witch](#witch) | [Hacker](#hacker) |  |  |
-| [Ninja](#ninja) | [Tracker](#tracker) |  |  |
-| [Evil Guesser](#guesser) | [Snitch](#snitch) |  |  |
-|  | [Spy](#spy) |  |  |
-|  | [Portalmaker](#portalmaker) |  |  |
-|  | [Security Guard](#security-guard) |  |  |
-|  | [Medium](#medium) |  |  |
-|  | [Nice Guesser](#guesser) |  |
+| [教父 (Mafia)](#mafia) | [交换师](#shifter) | [小丑](#jester) | [败血病](#bloody) |
+| [黑手党 (Mafia)](#mafia) | [市长](#mayor) | [纵火犯](#arsonist) | [晕传者](#anti-teleport) |
+| [搬运工 (Mafia)](#mafia) | [工程师](#engineer) | [豺狼](#jackal) | [破平者](#tie-breaker) |
+| [化形者](#morphling) | [警长](#sheriff) | [跟班](#sidekick) | [诱饵](#bait) |
+| [伪装者](#camouflager) | [警员](#deputy) | [秃鹫](#vulture) | [恋人](#lovers) |
+| [吸血鬼](#vampire) | [执灯人](#lighter) | [律师](#lawyer) | [墨镜](#sunglasses) |
+| [抹除者](#eraser) | [侦探](#detective) | | [迷你船员](#mini) |
+| [骗术师](#trickster) | [时间之主](#time-master) | | [贵宾](#vip) |
+| [清洁工](#cleaner) | [医生](#medic) |  | [酒鬼](#invert) |
+| [术士](#warlock) | [换票师](#swapper) |
+| [赏金猎人](#bounty-hunter) | [灵媒](#seer) |  |
+| [女巫](#witch) | [黑客](#hacker) |  |  |
+| [忍者](#ninja) | [追踪者](#tracker) |  |  |
+| [邪恶赌怪](#guesser) | [告密者](#snitch) |  |  |
+|  | [卧底](#spy) |  |  |
+|  | [传送门测试员](#portalmaker) |  |  |
+|  | [保安](#security-guard) |  |  |
+|  | [通灵师](#medium) |  |  |
+|  | [正义赌怪](#guesser) |  |
 
 The [Role Assignment](#role-assignment) sections explains how the roles are being distributed among the players.
 
