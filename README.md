@@ -15,9 +15,9 @@ This mod is not affiliated with Among Us or Innersloth LLC, and the content cont
 
 | 内鬼 | 船员 | 中立 | 特性 |
 |----------|-------------|-----------------|----------------|
-| [教父 (黑手党)](#mafia) | [交换师](#shifter) | [小丑](#jester) | [败血病](#bloody) |
-| [黑手党成员 (黑手党)](#mafia) | [市长](#mayor) | [纵火犯](#arsonist) | [晕传者](#anti-teleport) |
-| [守门人 (黑手党)](#mafia) | [工程师](#engineer) | [豺狼](#jackal) | [破平者](#tie-breaker) |
+| [教父 (黑手党)](#黑手党) | [交换师](#shifter) | [小丑](#jester) | [败血病](#bloody) |
+| [黑手党成员 (黑手党)](#黑手党) | [市长](#mayor) | [纵火犯](#arsonist) | [晕传者](#anti-teleport) |
+| [守门人 (黑手党)](#黑手党) | [工程师](#engineer) | [豺狼](#jackal) | [破平者](#tie-breaker) |
 | [化形者](#morphling) | [警长](#sheriff) | [跟班](#sidekick) | [诱饵](#bait) |
 | [伪装者](#camouflager) | [警员](#deputy) | [秃鹫](#vulture) | [恋人](#lovers) |
 | [吸血鬼](#vampire) | [执灯人](#lighter) | [律师](#lawyer) | [墨镜](#sunglasses) |
@@ -35,7 +35,7 @@ This mod is not affiliated with Among Us or Innersloth LLC, and the content cont
 |  | [通灵师](#medium) |  |  |
 |  | [正义赌怪](#guesser) |  |
 
-[职业分配](#role-assignment) 部分将解释职业将如何分配给玩家。
+[职业分配规则](#职业分配规则) 部分将解释职业将如何分配给玩家。
 
 
 # Releases
@@ -759,7 +759,7 @@ Here are a few instructions, on how to create a custom hat:
 
 # 职业
 
-## 职业分配
+## 职业分配规则
 
 首先你需要选择有多少名不同种类的 职业 (内鬼/中立/船员) 将会存在游戏中。
 仅有足够的船员/内鬼在场并且设置了足够的职业数量(即它们的出现概率设置大于0)，你所设置职业上限才会满足。
