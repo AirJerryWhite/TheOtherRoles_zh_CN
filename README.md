@@ -789,6 +789,7 @@ Here are a few instructions, on how to create a custom hat:
 | 黑手党出现概率 | -
 | 守门人技能冷却 | -
 -----------------------
+[职业目录](#The Other Roles)
 
 ## 化形者
 ### **所属阵营: 内鬼**
@@ -809,6 +810,7 @@ Here are a few instructions, on how to create a custom hat:
 | 化形者技能冷却 | -
 | 化形者技能持续时间 | 化形者化形的持续时间
 -----------------------
+[职业目录](#The Other Roles)
 
 ## 伪装者
 ### **所属阵营: 内鬼**
@@ -830,6 +832,7 @@ Here are a few instructions, on how to create a custom hat:
 | 伪装者技能冷却 | -
 | 伪装者技能持续时间 | -
 -----------------------
+[职业目录](#The Other Roles)
 
 ## Vampire
 ### **Team: Impostors**
