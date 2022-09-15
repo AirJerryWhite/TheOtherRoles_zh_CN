@@ -833,6 +833,7 @@ Here are a few instructions, on how to create a custom hat:
 | 伪装者技能持续时间 | -
 -----------------------
 [职业目录](#The Other Roles)
+[设置](#settings)
 
 ## Vampire
 ### **Team: Impostors**
