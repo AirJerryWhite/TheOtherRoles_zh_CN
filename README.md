@@ -2,7 +2,7 @@
 <p align="center"><a href="https://github.com/Eisbison/TheOtherRoles/releases/"><img src="https://badgen.net/github/release/eisbison/theotherroles"></a></p>
 
 <p align="center">
-This mod is not affiliated with Among Us or Innersloth LLC, and the content contained therein is not endorsed or otherwise sponsored by Innersloth LLC. Portions of the materials contained herein are property of Innersloth LLC. © Innersloth LLC.</p>
+此模组不隶属于Among Us或Innersloth LLC，其中包含的内容没有得到Innersloth LLC的认可或其他赞助。此模组包含的部分材料是Innersloth LLC的资产.© Innersloth LLC.</p>
 
 [![Discord](./Images/TOR_server.png)](https://discord.gg/77RkMJHWsM)
 ![eisbison infographic](./Images/TOR_Roles.png)
@@ -18,8 +18,8 @@ This mod is not affiliated with Among Us or Innersloth LLC, and the content cont
 | [教父 (黑手党)](#黑手党) | [交换师](#shifter) | [小丑](#jester) | [败血病](#bloody) |
 | [黑手党成员 (黑手党)](#黑手党) | [市长](#mayor) | [纵火犯](#arsonist) | [晕传者](#anti-teleport) |
 | [守门人 (黑手党)](#黑手党) | [工程师](#engineer) | [豺狼](#jackal) | [破平者](#tie-breaker) |
-| [化形者](#morphling) | [警长](#sheriff) | [跟班](#sidekick) | [诱饵](#bait) |
-| [伪装者](#camouflager) | [警员](#deputy) | [秃鹫](#vulture) | [恋人](#lovers) |
+| [化形者](#化形者) | [警长](#sheriff) | [跟班](#sidekick) | [诱饵](#bait) |
+| [伪装者](#伪装者) | [警员](#deputy) | [秃鹫](#vulture) | [恋人](#lovers) |
 | [吸血鬼](#vampire) | [执灯人](#lighter) | [律师](#lawyer) | [墨镜](#sunglasses) |
 | [抹除者](#eraser) | [侦探](#detective) | | [迷你船员](#mini) |
 | [骗术师](#trickster) | [时间之主](#time-master) | | [贵宾](#vip) |
@@ -38,8 +38,8 @@ This mod is not affiliated with Among Us or Innersloth LLC, and the content cont
 [职业分配规则](#职业分配规则) 部分将解释职业将如何分配给玩家。
 
 
-# Releases
-| Among Us - Version| Mod Version | Link |
+# 版本
+| Among Us 版本| 模组版本 | 链接 |
 |----------|-------------|-----------------|
 | 2022.8.24| v4.1.7| [Download](https://github.com/Eisbison/TheOtherRoles/releases/download/v4.1.7/TheOtherRoles.zip)
 | 2022.6.21| v4.1.6| [Download](https://github.com/Eisbison/TheOtherRoles/releases/download/v4.1.6/TheOtherRoles.zip)
@@ -106,9 +106,9 @@ This mod is not affiliated with Among Us or Innersloth LLC, and the content cont
 | 2020.12.19s | v1.1 | [Download](https://github.com/Eisbison/TheOtherRoles/releases/download/v1.1/TheOtherRoles.zip)
 | 2020.12.19s | v1.0 | [Download](https://github.com/Eisbison/TheOtherRoles/files/6097191/TheOtherRoles.zip)
 
-# Changelog
+# 更新日志
 <details>
-  <summary>Click to show the Changelog</summary>
+  <summary>点击显示更新日志</summary>
 
 **Version 4.1.7**
 - Updated to Among Us version 2022.8.24
@@ -790,45 +790,45 @@ Here are a few instructions, on how to create a custom hat:
 | 守门人技能冷却 | -
 -----------------------
 
-## Morphling
-### **Team: Impostors**
-The Morphling is an Impostor which can additionally scan the appearance of a player. After an arbitrary time they can take on that appearance for 10s.\
+## 化形者
+### **所属阵营: 内鬼**
+化形者可以通过对其他玩家的外貌进行采样，之后化形者可以化形成该玩家10秒钟。\
 \
-**NOTE:**
-- They shrink to the size of the Mini when they copy its look.
-- The Hacker sees the new color on the admin table.
-- The color of the footprints changes accordingly (also the ones that were already on the ground).
-- The other Impostor still sees that they are an Impostor (the name remains red).
-- The shield indicator changes accordingly (the Morphling gains or loses the shield indicator).
-- Tracker and Snitch arrows keep working.
+**注释：**
+- 化形者化形成迷你船员时，大小也会随之改变。
+- 黑客会在管理桌看到新的颜色，当化形者化形时。
+- 化形者的脚印会及时改变颜色包括已经存在的脚印。
+- 其他的内鬼可以知道化形后的化形者是内鬼（他们的名称依旧为红色）.
+- 医生的护盾会随着化形而改变（化形者获得或者失去护盾）。
+- 追踪者和告密者的指示箭头不受影响。
 
-### Game Options
-| Name | Description |
+### 游戏设置
+| 名称 | 介绍 |
 |----------|:-------------:|
-| Morphling Spawn Chance | -
-| Morphling Cooldown | -
-| Morph Duration | Time the Morphling stays morphed
+| 化形者出现概率 | -
+| 化形者技能冷却 | -
+| 化形者技能持续时间 | 化形者化形的持续时间
 -----------------------
 
-## Camouflager
-### **Team: Impostors**
-The Camouflager is an Impostor which can additionally activate a camouflage mode.\
-The camouflage mode lasts for 10s and while it is active, all player names/pets/hats\
-are hidden and all players have the same color.\
+## 伪装者
+### **所属阵营: 内鬼**
+伪装者可以启用伪装模式。\
+当伪装者技能启用时将持续10秒钟，所有玩家的名称/宠物/帽子\
+都会被隐藏并且所有玩家都会变成相同的颜色。\
 \
-**NOTE:**
-- The Mini will look like all the other players
-- The color of the footprints turns gray (also the ones that were already on the ground).
-- The Hacker sees gray icons on the admin table
-- The shield is not visible anymore
-- Tracker and Snitch arrows keep working
+**注释:**
+- 迷你船员也受伪装者技能的影响。
+- 脚印的颜色也会变灰包括已经存在的脚印。
+- 黑客会在管理桌看到灰色的图标。
+- 医生的护盾在这期间不再可见。
+- 追踪者和告密者的指示箭头不受影响。
 
-### Game Options
-| Name | Description |
+### 游戏设置
+| 名称 | 介绍 |
 |----------|:-------------:|
-| Camouflager Spawn Chance | -
-| Camouflager Cooldown | -
-| Camo Duration | Time players stay camouflaged
+| 伪装者出现概率 | -
+| 伪装者技能冷却 | -
+| 伪装者技能持续时间 | -
 -----------------------
 
 ## Vampire
