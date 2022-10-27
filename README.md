@@ -2,43 +2,44 @@
 <p align="center"><a href="https://github.com/Eisbison/TheOtherRoles/releases/"><img src="https://badgen.net/github/release/eisbison/theotherroles"></a></p>
 
 <p align="center">
-This mod is not affiliated with Among Us or Innersloth LLC, and the content contained therein is not endorsed or otherwise sponsored by Innersloth LLC. Portions of the materials contained herein are property of Innersloth LLC. © Innersloth LLC.</p>
+此模组不隶属于Among Us或Innersloth LLC，其中包含的内容没有得到Innersloth LLC的认可或其他赞助。此模组包含的部分材料是Innersloth LLC的资产.© Innersloth LLC.</p>
 
 [![Discord](./Images/TOR_server.png)](https://discord.gg/77RkMJHWsM)
 ![eisbison infographic](./Images/TOR_Roles.png)
 
 
-# The Other Roles
+# The_Other_Roles
+**The Other Roles** 是 [Among Us](https://store.steampowered.com/app/945360/Among_Us) 的一个给游戏添加了大量新职业，新的 [设置](#settings) 和新的 [自定义帽子](#custom-hats) 的 mod。
 
-The **The Other Roles**, is a mod for [Among Us](https://store.steampowered.com/app/945360/Among_Us) which adds many new roles, new [Settings](#settings) and new [Custom Hats](#custom-hats) to the game.
-Even more roles are coming soon. :)
+更多的职业将会被推出。 :)
 
-| Impostors | Crewmates | Neutral | Modifier |
+| 内鬼 | 船员 | 中立 | 特性 |
 |----------|-------------|-----------------|----------------|
-| [Godfather (Mafia)](#mafia) | [Shifter](#shifter) | [Jester](#jester) | [Bloody](#bloody) |
-| [Mafioso (Mafia)](#mafia) | [Mayor](#mayor) | [Arsonist](#arsonist) | [Anti Teleport](#anti-teleport) |
-| [Janitor (Mafia)](#mafia) | [Engineer](#engineer) | [Jackal](#jackal) | [Tie Breaker](#tie-breaker) |
-| [Morphling](#morphling) | [Sheriff](#sheriff) | [Sidekick](#sidekick) | [Bait](#bait) |
-| [Camouflager](#camouflager) | [Deputy](#deputy) | [Vulture](#vulture) | [Lovers](#lovers) |
-| [Vampire](#vampire) | [Lighter](#lighter) | [Lawyer](#lawyer) | [Sunglasses](#sunglasses) |
-| [Eraser](#eraser) | [Detective](#detective) | | [Mini](#mini) |
-| [Trickster](#trickster) | [Time Master](#time-master) | | [VIP](#vip) |
-| [Cleaner](#cleaner) | [Medic](#medic) |  | [Invert](#invert) |
-| [Warlock](#warlock) | [Swapper](#swapper) |
-| [Bounty Hunter](#bounty-hunter) | [Seer](#seer) |  |
-| [Witch](#witch) | [Hacker](#hacker) |  |  |
-| [Ninja](#ninja) | [Tracker](#tracker) |  |  |
-| [Evil Guesser](#guesser) | [Snitch](#snitch) |  |  |
-|  | [Spy](#spy) |  |  |
-|  | [Portalmaker](#portalmaker) |  |  |
-|  | [Security Guard](#security-guard) |  |  |
-|  | [Medium](#medium) |  |  |
-|  | [Nice Guesser](#guesser) |  |
+| [教父 (黑手党)](#黑手党) | [交换师](#shifter) | [小丑](#jester) | [败血病](#bloody) |
+| [黑手党成员 (黑手党)](#黑手党) | [市长](#mayor) | [纵火犯](#arsonist) | [晕传者](#anti-teleport) |
+| [守门人 (黑手党)](#黑手党) | [工程师](#engineer) | [豺狼](#jackal) | [破平者](#tie-breaker) |
+| [化形者](#化形者) | [警长](#sheriff) | [跟班](#sidekick) | [诱饵](#bait) |
+| [伪装者](#伪装者) | [警员](#deputy) | [秃鹫](#vulture) | [恋人](#lovers) |
+| [吸血鬼](#vampire) | [执灯人](#lighter) | [律师](#lawyer) | [墨镜](#sunglasses) |
+| [抹除者](#eraser) | [侦探](#detective) | | [迷你船员](#mini) |
+| [骗术师](#trickster) | [时间之主](#time-master) | | [贵宾](#vip) |
+| [清洁工](#cleaner) | [医生](#medic) |  | [酒鬼](#invert) |
+| [术士](#warlock) | [换票师](#swapper) |
+| [赏金猎人](#bounty-hunter) | [灵媒](#seer) |  |
+| [女巫](#witch) | [黑客](#hacker) |  |  |
+| [忍者](#ninja) | [追踪者](#tracker) |  |  |
+| [邪恶赌怪](#guesser) | [告密者](#snitch) |  |  |
+|  | [卧底](#spy) |  |  |
+|  | [传送门测试员](#portalmaker) |  |  |
+|  | [保安](#security-guard) |  |  |
+|  | [通灵师](#medium) |  |  |
+|  | [正义赌怪](#guesser) |  |
 
-The [Role Assignment](#role-assignment) sections explains how the roles are being distributed among the players.
+[职业分配规则](#职业分配规则) 部分将解释职业将如何分配给玩家。
 
-# Releases
-| Among Us - Version| Mod Version | Link |
+
+# 版本
+| Among Us 版本| 模组版本 | 链接 |
 |----------|-------------|-----------------|
 | 2022.8.24| v4.1.7| [Download](https://github.com/Eisbison/TheOtherRoles/releases/download/v4.1.7/TheOtherRoles.zip)
 | 2022.6.21| v4.1.6| [Download](https://github.com/Eisbison/TheOtherRoles/releases/download/v4.1.6/TheOtherRoles.zip)
@@ -105,9 +106,9 @@ The [Role Assignment](#role-assignment) sections explains how the roles are bein
 | 2020.12.19s | v1.1 | [Download](https://github.com/Eisbison/TheOtherRoles/releases/download/v1.1/TheOtherRoles.zip)
 | 2020.12.19s | v1.0 | [Download](https://github.com/Eisbison/TheOtherRoles/files/6097191/TheOtherRoles.zip)
 
-# Changelog
+# 更新日志
 <details>
-  <summary>Click to show the Changelog</summary>
+  <summary>点击显示更新日志</summary>
 
 **Version 4.1.7**
 - Updated to Among Us version 2022.8.24
@@ -753,81 +754,84 @@ Here are a few instructions, on how to create a custom hat:
 
 - **Submission:** If you got a hat design, you can submit it on our [Discord server](https://discord.gg/77RkMJHWsM). We'll look at all the hats and add all the good ones to the game.
 
-# Colors
+# 颜色
 ![TOR Colors](./Images/TOR_colors.jpg)
 
-# Roles
+# 职业
 
-## Role Assignment
+## 职业分配规则
 
-First you need to choose how many special roles of each kind (Impostor/Neutral/Crewmate) you want in the game.
-The count you set will only be reached, if there are enough Crewmates/Impostors in the game and if enough roles are set to be in the game (i.e. they are set to > 0%). The roles are then being distributed as follows:
-- First all roles that are set to 100% are being assigned to arbitrary players.
-- After that each role that has 10%-90% selected adds 1-9 tickets to a ticket pool (there exists a ticket pool for Crewmates, Neutrals and Impostors). Then the roles will be selected randomly from the pools as long it's possible (until the selected number is reached, until there are no more Crewmates/Impostors or until there are no more tickets). If a role is selected from the pool, obviously all the tickets of that role are being removed.
-- The Mafia, Lovers and Mini are being selected independently (without using the ticket system) according to the spawn chance you selected. After that the Crewmate, Neutral and Impostor roles are selected and assigned in a random order.
+首先你需要选择有多少名不同种类的 职业 (内鬼/中立/船员) 将会存在游戏中。
+仅有足够的船员/内鬼在场并且设置了足够的职业数量(即它们的出现概率设置大于0)，你所设置职业上限才会满足。
+职业分配规则如下：
+- 首先所有出现概率为100%的职业将会优先被分配给随机玩家。
+- 然后其他出现概率在10%-90%间的职业将会获得 1-9张 的票 到职业池中（船员、中立和内鬼均拥有一个自己的抽签箱）。接着职业将会随机从职业池中抽取。（直到达到预定的数值，或 职业池被耗尽。）。当一个职业被从职业池中选出，它在职业池中所拥有的票都会被移除。
+- 黑手党，恋人和迷你船员将使用独立的概率进行分配（不会使用职业池），之后船员、中立和内鬼职业将会随机选择并分配。
 
-**Example:**\
-Settings: 2 special Crewmate roles, Snitch: 100%, Hacker: 10%, Tracker: 30%\
-Result: Snitch is assigned, then one role out of the pool [Hacker, Tracker, Tracker, Tracker] is being selected\
-Note: Changing the settings to Hacker: 20%, Tracker: 60% would statistically result in the same outcome .
+**例子：**\
+设置： 两个特殊船员职业, 告密者: 100%, 黑客: 10%, 追踪者: 30%\
+结果： 告密者将会被随机分配给玩家, 另外一个职业将从 [黑客, 追踪者, 追踪者, 追踪者] 中选出。\
+注释： 将设置更改为 黑客: 20%, 追踪者: 60% 将会在统计学上获得相同的结果。
 
-
-## Mafia
-### **Team: Impostors**
-The Mafia are a group of three Impostors.\
-The Godfather works like a normal Impostor.\
-The Mafioso is an Impostor who cannot kill until the Godfather is dead.\
-The Janitor is an Impostor who cannot kill, but they can hide dead bodies instead.\
+## 黑手党
+### **所属阵营: 内鬼**
+黑手党由三名内鬼组成。\
+教父的职责与正常的内鬼相同。\
+黑手党成员直到教父死亡后才可以杀人。\
+守门人不能击杀，但它可以隐藏尸体。\
 \
-**NOTE:**
-- There have to be 3 Impostors activated for the mafia to spawn.
+**注释：**
+- 仅当满足三名内鬼存在于这场游戏中时黑手党团体才可以存在
 
-### Game Options
-| Name | Description |
+[职业目录](#The_Other_Roles)
+### 游戏设置
+| 名称 | 介绍 |
 |----------|:-------------:|
-| Mafia Spawn Chance | -
-| Janitor Cooldown | -
+| 黑手党出现概率 | -
+| 守门人技能冷却 | -
 -----------------------
 
-## Morphling
-### **Team: Impostors**
-The Morphling is an Impostor which can additionally scan the appearance of a player. After an arbitrary time they can take on that appearance for 10s.\
+## 化形者
+### **所属阵营: 内鬼**
+化形者可以通过对其他玩家的外貌进行采样，之后化形者可以化形成该玩家10秒钟。\
 \
-**NOTE:**
-- They shrink to the size of the Mini when they copy its look.
-- The Hacker sees the new color on the admin table.
-- The color of the footprints changes accordingly (also the ones that were already on the ground).
-- The other Impostor still sees that they are an Impostor (the name remains red).
-- The shield indicator changes accordingly (the Morphling gains or loses the shield indicator).
-- Tracker and Snitch arrows keep working.
+**注释：**
+- 化形者化形成迷你船员时，大小也会随之改变。
+- 黑客会在管理桌看到新的颜色，当化形者化形时。
+- 化形者的脚印会及时改变颜色包括已经存在的脚印。
+- 其他的内鬼可以知道化形后的化形者是内鬼（他们的名称依旧为红色）.
+- 医生的护盾会随着化形而改变（化形者获得或者失去护盾）。
+- 追踪者和告密者的指示箭头不受影响。
 
-### Game Options
-| Name | Description |
+[职业目录](#The_Other_Roles)
+### 游戏设置
+| 名称 | 介绍 |
 |----------|:-------------:|
-| Morphling Spawn Chance | -
-| Morphling Cooldown | -
-| Morph Duration | Time the Morphling stays morphed
+| 化形者出现概率 | -
+| 化形者技能冷却 | -
+| 化形者技能持续时间 | 化形者化形的持续时间
 -----------------------
 
-## Camouflager
-### **Team: Impostors**
-The Camouflager is an Impostor which can additionally activate a camouflage mode.\
-The camouflage mode lasts for 10s and while it is active, all player names/pets/hats\
-are hidden and all players have the same color.\
+## 伪装者
+### **所属阵营: 内鬼**
+伪装者可以启用伪装模式。\
+当伪装者技能启用时将持续10秒钟，所有玩家的名称/宠物/帽子\
+都会被隐藏并且所有玩家都会变成相同的颜色。\
 \
-**NOTE:**
-- The Mini will look like all the other players
-- The color of the footprints turns gray (also the ones that were already on the ground).
-- The Hacker sees gray icons on the admin table
-- The shield is not visible anymore
-- Tracker and Snitch arrows keep working
+**注释:**
+- 迷你船员也受伪装者技能的影响。
+- 脚印的颜色也会变灰包括已经存在的脚印。
+- 黑客会在管理桌看到灰色的图标。
+- 医生的护盾在这期间不再可见。
+- 追踪者和告密者的指示箭头不受影响。
 
-### Game Options
-| Name | Description |
+[职业目录](#The_Other_Roles)
+### 游戏设置
+| 名称 | 介绍 |
 |----------|:-------------:|
-| Camouflager Spawn Chance | -
-| Camouflager Cooldown | -
-| Camo Duration | Time players stay camouflaged
+| 伪装者出现概率 | -
+| 伪装者技能冷却 | -
+| 伪装者技能持续时间 | -
 -----------------------
 
 ## Vampire
