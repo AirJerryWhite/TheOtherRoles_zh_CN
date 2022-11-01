@@ -246,13 +246,13 @@ namespace TheOtherRoles.Patches {
                 } else {
                     selections[i] = true;
                     renderer.color = Color.yellow;
-                    swapperConfirmButtonLabel.text = Helpers.cs(Color.yellow, "Confirm Swap");
+                    swapperConfirmButtonLabel.text = Helpers.cs(Color.yellow, "确认交换");
                 }
             } else if (selectedCount == 2) {
                 if (selections[i]) {
                     renderer.color = Color.red;
                     selections[i] = false;
-                    swapperConfirmButtonLabel.text = Helpers.cs(Color.red, "Confirm Swap");
+                    swapperConfirmButtonLabel.text = Helpers.cs(Color.red, "确认交换");
                 }
             }
         }
@@ -285,9 +285,9 @@ namespace TheOtherRoles.Patches {
                 AmongUsClient.Instance.FinishRpcImmediately(writer);
 
                 RPCProcedure.swapperSwap((byte)firstPlayer.TargetPlayerId, (byte)secondPlayer.TargetPlayerId);
-                swapperConfirmButtonLabel.text = Helpers.cs(Color.green, "Swapping!");
+                swapperConfirmButtonLabel.text = Helpers.cs(Color.green, "交换中!");
                 Swapper.charges--;
-                swapperChargesText.text = $"Swaps: {Swapper.charges}";
+                swapperChargesText.text = $"交换: {Swapper.charges}";
             }
         }
 
@@ -470,7 +470,7 @@ namespace TheOtherRoles.Patches {
                 Transform infoTransform = __instance.playerStates[0].NameText.transform.parent.FindChild("Info");
                 TMPro.TextMeshPro meetingInfo = infoTransform != null ? infoTransform.GetComponent<TMPro.TextMeshPro>() : null;
                 swapperChargesText = UnityEngine.Object.Instantiate(__instance.playerStates[0].NameText, confirmSwapButtonParent);
-                swapperChargesText.text = $"Swaps: {Swapper.charges}";
+                swapperChargesText.text = $"交换: {Swapper.charges}";
                 swapperChargesText.enableWordWrapping = false;
                 swapperChargesText.transform.localScale = Vector3.one * 1.7f;
                 swapperChargesText.transform.localPosition = new Vector3(-2.5f, 0f, 0f);
@@ -480,7 +480,7 @@ namespace TheOtherRoles.Patches {
                 confirmSwapButton.GetComponent<SpriteRenderer>().sprite = FastDestroyableSingleton<HatManager>.Instance.GetNamePlateById("nameplate_NoPlate")?.viewData?.viewData?.Image;
                 confirmSwapButtonParent.localPosition = new Vector3(0, -2.225f, -5);
                 confirmSwapButtonParent.localScale = new Vector3(0.55f, 0.55f, 1f);
-                swapperConfirmButtonLabel.text = Helpers.cs(Color.red, "Confirm Swap");
+                swapperConfirmButtonLabel.text = Helpers.cs(Color.red, "确认交换");
                 swapperConfirmButtonLabel.alignment = TMPro.TextAlignmentOptions.Center;
                 swapperConfirmButtonLabel.transform.localPosition = new Vector3(0, 0, swapperConfirmButtonLabel.transform.localPosition.z);
                 swapperConfirmButtonLabel.transform.localScale *= 1.7f;
@@ -589,8 +589,8 @@ namespace TheOtherRoles.Patches {
                 if (Portalmaker.portalmaker != null && CachedPlayer.LocalPlayer.PlayerControl == Portalmaker.portalmaker && !CachedPlayer.LocalPlayer.Data.IsDead) {
                     foreach (var entry in Portal.teleportedPlayers) {
                         float timeBeforeMeeting = ((float)(DateTime.UtcNow - entry.time).TotalMilliseconds) / 1000;
-                        string msg = Portalmaker.logShowsTime ? $"{(int)timeBeforeMeeting}s ago: " : "";
-                        msg = msg + $"{entry.name} used the teleporter";
+                        string msg = Portalmaker.logShowsTime ? $"{(int)timeBeforeMeeting}秒以前: " : "";
+                        msg = msg + $"{entry.name} 使用了传送门";
                         FastDestroyableSingleton<HudManager>.Instance.Chat.AddChat(CachedPlayer.LocalPlayer.PlayerControl, $"{msg}");
                     }
                 }
@@ -599,13 +599,13 @@ namespace TheOtherRoles.Patches {
                 if (Trapper.trapper != null && CachedPlayer.LocalPlayer.PlayerControl == Trapper.trapper) {
                     foreach (Trap trap in Trap.traps) {
                         if (!trap.revealed) continue;
-                        string message = $"Trap {trap.instanceId}: \n";
+                        string message = $"{trap.instanceId}踩中了陷阱: \n";
                         trap.trappedPlayer = trap.trappedPlayer.OrderBy(x => rnd.Next()).ToList();
                         foreach (PlayerControl p in trap.trappedPlayer) {
                             if (Trapper.infoType == 0) message += RoleInfo.GetRolesString(p, false, false) + "\n";
                             else if (Trapper.infoType == 1) {
-                                if (Helpers.isNeutral(p) || p.Data.Role.IsImpostor) message += "Evil Role \n";
-                                else message += "Good Role \n";
+                                if (Helpers.isNeutral(p) || p.Data.Role.IsImpostor) message += "邪恶职业 \n";
+                                else message += "好职业 \n";
                             }
                             else message += p.Data.PlayerName + "\n";
                         }
