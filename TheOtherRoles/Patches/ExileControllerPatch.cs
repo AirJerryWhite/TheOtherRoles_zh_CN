@@ -65,10 +65,17 @@ namespace TheOtherRoles.Patches {
                 foreach (PlayerControl target in Witch.futureSpelled) {
                     if (target != null && !target.Data.IsDead && Helpers.checkMuderAttempt(Witch.witch, target, true) == MurderAttemptResult.PerformKill)
                     {
+                        if (exiled != null && Lawyer.lawyer != null && (target == Lawyer.lawyer || target == Lovers.otherLover(Lawyer.lawyer)) && Lawyer.target != null && Lawyer.isProsecutor && Lawyer.target.PlayerId == exiled.PlayerId)
+                            continue;
                         MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(CachedPlayer.LocalPlayer.PlayerControl.NetId, (byte)CustomRPC.UncheckedExilePlayer, Hazel.SendOption.Reliable, -1);
                         writer.Write(target.PlayerId);
                         AmongUsClient.Instance.FinishRpcImmediately(writer);
                         RPCProcedure.uncheckedExilePlayer(target.PlayerId);
+                        if (target == Lawyer.target && Lawyer.lawyer != null) {
+                            MessageWriter writer2 = AmongUsClient.Instance.StartRpcImmediately(CachedPlayer.LocalPlayer.PlayerControl.NetId, (byte)CustomRPC.LawyerPromotesToPursuer, Hazel.SendOption.Reliable, -1);
+                            AmongUsClient.Instance.FinishRpcImmediately(writer2);
+                            RPCProcedure.lawyerPromotesToPursuer();
+                        }
                     }
                 }
             }
@@ -76,15 +83,15 @@ namespace TheOtherRoles.Patches {
 
             // SecurityGuard vents and cameras
             var allCameras = MapUtilities.CachedShipStatus.AllCameras.ToList();
-            MapOptions.camerasToAdd.ForEach(camera => {
+            TORMapOptions.camerasToAdd.ForEach(camera => {
                 camera.gameObject.SetActive(true);
                 camera.gameObject.GetComponent<SpriteRenderer>().color = Color.white;
                 allCameras.Add(camera);
             });
             MapUtilities.CachedShipStatus.AllCameras = allCameras.ToArray();
-            MapOptions.camerasToAdd = new List<SurvCamera>();
+            TORMapOptions.camerasToAdd = new List<SurvCamera>();
 
-            foreach (Vent vent in MapOptions.ventsToSeal) {
+            foreach (Vent vent in TORMapOptions.ventsToSeal) {
                 PowerTools.SpriteAnim animator = vent.GetComponent<PowerTools.SpriteAnim>(); 
                 animator?.Stop();
                 vent.EnterVentAnim = vent.ExitVentAnim = null;
@@ -94,7 +101,9 @@ namespace TheOtherRoles.Patches {
                 vent.myRend.color = Color.white;
                 vent.name = "SealedVent_" + vent.name;
             }
-            MapOptions.ventsToSeal = new List<Vent>();
+            TORMapOptions.ventsToSeal = new List<Vent>();
+
+            EventUtility.meetingEndsUpdate();
         }
     }
 
@@ -128,8 +137,12 @@ namespace TheOtherRoles.Patches {
         }
 
         static void WrapUpPostfix(GameData.PlayerInfo exiled) {
+            // Prosecutor win condition
+            if (exiled != null && Lawyer.lawyer != null && Lawyer.target != null && Lawyer.isProsecutor && Lawyer.target.PlayerId == exiled.PlayerId && !Lawyer.lawyer.Data.IsDead)
+                Lawyer.triggerProsecutorWin = true;
+
             // Mini exile lose condition
-            if (exiled != null && Mini.mini != null && Mini.mini.PlayerId == exiled.PlayerId && !Mini.isGrownUp() && !Mini.mini.Data.Role.IsImpostor && !RoleInfo.getRoleInfoForPlayer(Mini.mini).Any(x => x.isNeutral)) {
+            else if (exiled != null && Mini.mini != null && Mini.mini.PlayerId == exiled.PlayerId && !Mini.isGrownUp() && !Mini.mini.Data.Role.IsImpostor && !RoleInfo.getRoleInfoForPlayer(Mini.mini).Any(x => x.isNeutral)) {
                 Mini.triggerMiniLose = true;
             }
             // Jester win condition
@@ -140,13 +153,14 @@ namespace TheOtherRoles.Patches {
             else if (exiled != null && Lawyer.lawyer != null && Lawyer.target != null && Lawyer.isProsecutor && Lawyer.target.PlayerId == exiled.PlayerId && !Lawyer.lawyer.Data.IsDead)
                 Lawyer.triggerProsecutorWin = true;
 
+
             // Reset custom button timers where necessary
             CustomButton.MeetingEndedUpdate();
 
             // Mini set adapted cooldown
             if (Mini.mini != null && CachedPlayer.LocalPlayer.PlayerControl == Mini.mini && Mini.mini.Data.Role.IsImpostor) {
                 var multiplier = Mini.isGrownUp() ? 0.66f : 2f;
-                Mini.mini.SetKillTimer(PlayerControl.GameOptions.KillCooldown * multiplier);
+                Mini.mini.SetKillTimer(GameOptionsManager.Instance.currentNormalGameOptions.KillCooldown * multiplier);
             }
 
             // Seer spawn souls
@@ -180,14 +194,14 @@ namespace TheOtherRoles.Patches {
             // Arsonist deactivate dead poolable players
             if (Arsonist.arsonist != null && Arsonist.arsonist == CachedPlayer.LocalPlayer.PlayerControl) {
                 int visibleCounter = 0;
-                Vector3 bottomLeft = new Vector3(-FastDestroyableSingleton<HudManager>.Instance.UseButton.transform.localPosition.x, FastDestroyableSingleton<HudManager>.Instance.UseButton.transform.localPosition.y, FastDestroyableSingleton<HudManager>.Instance.UseButton.transform.localPosition.z);
-                bottomLeft += new Vector3(-0.25f, -0.25f, 0);
+                Vector3 newBottomLeft = IntroCutsceneOnDestroyPatch.bottomLeft;
+                var BottomLeft = newBottomLeft + new Vector3(-0.25f, -0.25f, 0);
                 foreach (PlayerControl p in CachedPlayer.AllPlayers) {
-                    if (!MapOptions.playerIcons.ContainsKey(p.PlayerId)) continue;
+                    if (!TORMapOptions.playerIcons.ContainsKey(p.PlayerId)) continue;
                     if (p.Data.IsDead || p.Data.Disconnected) {
-                        MapOptions.playerIcons[p.PlayerId].gameObject.SetActive(false);
+                        TORMapOptions.playerIcons[p.PlayerId].gameObject.SetActive(false);
                     } else {
-                        MapOptions.playerIcons[p.PlayerId].transform.localPosition = bottomLeft + Vector3.right * visibleCounter * 0.35f;
+                        TORMapOptions.playerIcons[p.PlayerId].transform.localPosition = newBottomLeft + Vector3.right * visibleCounter * 0.35f;
                         visibleCounter++;
                     }
                 }
@@ -235,7 +249,7 @@ namespace TheOtherRoles.Patches {
             Chameleon.lastMoved.Clear();
 
             foreach (Trap trap in Trap.traps) trap.triggerable = false;
-            FastDestroyableSingleton<HudManager>.Instance.StartCoroutine(Effects.Lerp(PlayerControl.GameOptions.KillCooldown / 2 + 2, new Action<float>((p) => {
+            FastDestroyableSingleton<HudManager>.Instance.StartCoroutine(Effects.Lerp(GameOptionsManager.Instance.currentNormalGameOptions.KillCooldown / 2 + 2, new Action<float>((p) => {
             if (p == 1f) foreach (Trap trap in Trap.traps) trap.triggerable = true;
             })));
         }
