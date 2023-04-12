@@ -12,8 +12,8 @@ using TheOtherRoles.Players;
 using TheOtherRoles.Utilities;
 using System.Threading.Tasks;
 using System.Net;
+using System.Globalization;
 using TheOtherRoles.CustomGameModes;
-using Reactor.Utilities.Extensions;
 
 namespace TheOtherRoles {
 
@@ -55,9 +55,6 @@ namespace TheOtherRoles {
                 var length = stream.Length;
                 var byteTexture = new Il2CppStructArray<byte>(length);
                 stream.Read(new Span<byte>(IntPtr.Add(byteTexture.Pointer, IntPtr.Size * 4).ToPointer(), (int) length));
-                if (path.Contains("HorseHats")) {
-                    byteTexture = new Il2CppStructArray<byte>(byteTexture.Reverse().ToArray());
-                }
                 ImageConversion.LoadImage(texture, byteTexture, false);
                 return texture;
             } catch {
@@ -75,7 +72,7 @@ namespace TheOtherRoles {
                     return texture;
                 }
             } catch {
-                TheOtherRolesPlugin.Logger.LogError("Error loading texture from disk: " + path);
+                System.Console.WriteLine("Error loading texture from disk: " + path);
             }
             return null;
         }
@@ -95,7 +92,7 @@ namespace TheOtherRoles {
                 }
                 int channels = 2;
                 int sampleRate = 48000;
-                AudioClip audioClip = AudioClip.Create(clipName, samples.Length / 2, channels, sampleRate, false);
+                AudioClip audioClip = AudioClip.Create(clipName, samples.Length, channels, sampleRate, false);
                 audioClip.SetData(samples, 0);
                 return audioClip;
             } catch {
@@ -204,10 +201,6 @@ namespace TheOtherRoles {
             return (player != Jackal.jackal && player != Sidekick.sidekick && !Jackal.formerJackals.Any(x => x == player));
         }
 
-        public static bool shouldShowGhostInfo() {
-            return CachedPlayer.LocalPlayer.PlayerControl != null && CachedPlayer.LocalPlayer.PlayerControl.Data.IsDead && TORMapOptions.ghostsSeeInformation;
-        }
-
         public static void clearAllTasks(this PlayerControl player) {
             if (player == null) return;
             foreach (var playerTask in player.myTasks.GetFastEnumerator())
@@ -235,11 +228,7 @@ namespace TheOtherRoles {
         public static string cs(Color c, string s) {
             return string.Format("<color=#{0:X2}{1:X2}{2:X2}{3:X2}>{4}</color>", ToByte(c.r), ToByte(c.g), ToByte(c.b), ToByte(c.a), s);
         }
-
-        public static int lineCount(string text) {
-            return text.Count(c => c == '\n');
-        }
-
+ 
         private static byte ToByte(float f) {
             f = Mathf.Clamp01(f);
             return (byte)(f * 255);
@@ -265,9 +254,8 @@ namespace TheOtherRoles {
 
         public static bool hidePlayerName(PlayerControl source, PlayerControl target) {
             if (Camouflager.camouflageTimer > 0f) return true; // No names are visible
-            if (Patches.SurveillanceMinigamePatch.nightVisionIsActive) return true;
-            else if (Ninja.isInvisble && Ninja.ninja == target) return true;
-            else if (!TORMapOptions.hidePlayerNames) return false; // All names are visible
+            else if (Ninja.isInvisble && Ninja.ninja == target) return true; 
+            else if (!MapOptions.hidePlayerNames) return false; // All names are visible
             else if (source == null || target == null) return true;
             else if (source == target) return false; // Player sees his own name
             else if (source.Data.Role.IsImpostor && (target.Data.Role.IsImpostor || target == Spy.spy || target == Sidekick.sidekick && Sidekick.wasTeamRed || target == Jackal.jackal && Jackal.wasTeamRed)) return false; // Members of team Impostors see the names of Impostors/Spies
@@ -277,11 +265,11 @@ namespace TheOtherRoles {
             return true;
         }
 
-        public static void setDefaultLook(this PlayerControl target, bool enforceNightVisionUpdate = true) {
-            target.setLook(target.Data.PlayerName, target.Data.DefaultOutfit.ColorId, target.Data.DefaultOutfit.HatId, target.Data.DefaultOutfit.VisorId, target.Data.DefaultOutfit.SkinId, target.Data.DefaultOutfit.PetId, enforceNightVisionUpdate);
+        public static void setDefaultLook(this PlayerControl target) {
+            target.setLook(target.Data.PlayerName, target.Data.DefaultOutfit.ColorId, target.Data.DefaultOutfit.HatId, target.Data.DefaultOutfit.VisorId, target.Data.DefaultOutfit.SkinId, target.Data.DefaultOutfit.PetId);
         }
 
-        public static void setLook(this PlayerControl target, String playerName, int colorId, string hatId, string visorId, string skinId, string petId, bool enforceNightVisionUpdate = true) {
+        public static void setLook(this PlayerControl target, String playerName, int colorId, string hatId, string visorId, string skinId, string petId) {
             target.RawSetColor(colorId);
             target.RawSetVisor(visorId, colorId);
             target.RawSetHat(hatId, colorId);
@@ -291,16 +279,14 @@ namespace TheOtherRoles {
             PlayerPhysics playerPhysics = target.MyPhysics;
             AnimationClip clip = null;
             var spriteAnim = playerPhysics.myPlayer.cosmetics.skin.animator;
-            var currentPhysicsAnim = playerPhysics.Animations.Animator.GetCurrentAnimation();
-
-
-            if (currentPhysicsAnim == playerPhysics.Animations.group.RunAnim) clip = nextSkin.RunAnim;
-            else if (currentPhysicsAnim == playerPhysics.Animations.group.SpawnAnim) clip = nextSkin.SpawnAnim;
-            else if (currentPhysicsAnim == playerPhysics.Animations.group.EnterVentAnim) clip = nextSkin.EnterVentAnim;
-            else if (currentPhysicsAnim == playerPhysics.Animations.group.ExitVentAnim) clip = nextSkin.ExitVentAnim;
-            else if (currentPhysicsAnim == playerPhysics.Animations.group.IdleAnim) clip = nextSkin.IdleAnim;
+            var currentPhysicsAnim = playerPhysics.Animator.GetCurrentAnimation();
+            if (currentPhysicsAnim == playerPhysics.CurrentAnimationGroup.RunAnim) clip = nextSkin.RunAnim;
+            else if (currentPhysicsAnim == playerPhysics.CurrentAnimationGroup.SpawnAnim) clip = nextSkin.SpawnAnim;
+            else if (currentPhysicsAnim == playerPhysics.CurrentAnimationGroup.EnterVentAnim) clip = nextSkin.EnterVentAnim;
+            else if (currentPhysicsAnim == playerPhysics.CurrentAnimationGroup.ExitVentAnim) clip = nextSkin.ExitVentAnim;
+            else if (currentPhysicsAnim == playerPhysics.CurrentAnimationGroup.IdleAnim) clip = nextSkin.IdleAnim;
             else clip = nextSkin.IdleAnim;
-            float progress = playerPhysics.Animations.Animator.m_animator.GetCurrentAnimatorStateInfo(0).normalizedTime;
+            float progress = playerPhysics.Animator.m_animator.GetCurrentAnimatorStateInfo(0).normalizedTime;
             playerPhysics.myPlayer.cosmetics.skin.skin = nextSkin;
             playerPhysics.myPlayer.cosmetics.skin.UpdateMaterial();
 
@@ -315,21 +301,13 @@ namespace TheOtherRoles {
             target.cosmetics.currentPet.Visible = target.Visible;
             target.SetPlayerMaterialColors(target.cosmetics.currentPet.rend);
 
-            if (enforceNightVisionUpdate) Patches.SurveillanceMinigamePatch.enforceNightVision(target);
             Chameleon.update();  // so that morphling and camo wont make the chameleons visible
         }
 
-        public static void showFlash(Color color, float duration=1f, string message="") {
+        public static void showFlash(Color color, float duration=1f) {
             if (FastDestroyableSingleton<HudManager>.Instance == null || FastDestroyableSingleton<HudManager>.Instance.FullScreen == null) return;
             FastDestroyableSingleton<HudManager>.Instance.FullScreen.gameObject.SetActive(true);
             FastDestroyableSingleton<HudManager>.Instance.FullScreen.enabled = true;
-            // Message Text
-            TMPro.TextMeshPro messageText = GameObject.Instantiate(FastDestroyableSingleton<HudManager>.Instance.KillButton.cooldownTimerText, FastDestroyableSingleton<HudManager>.Instance.transform);
-            messageText.text = message;
-            messageText.enableWordWrapping = false;
-            messageText.transform.localScale = Vector3.one * 0.5f;
-            messageText.transform.localPosition += new Vector3(0f, 2f, -69f);
-            messageText.gameObject.SetActive(true);
             FastDestroyableSingleton<HudManager>.Instance.StartCoroutine(Effects.Lerp(duration, new Action<float>((p) => {
                 var renderer = FastDestroyableSingleton<HudManager>.Instance.FullScreen;
 
@@ -341,7 +319,6 @@ namespace TheOtherRoles {
                         renderer.color = new Color(color.r, color.g, color.b, Mathf.Clamp01((1 - p) * 2 * 0.75f));
                 }
                 if (p == 1f && renderer != null) renderer.enabled = false;
-                if (p == 1f) messageText.gameObject.Destroy();
             })));
         }
 
@@ -370,19 +347,19 @@ namespace TheOtherRoles {
             return roleCouldUse;
         }
 
-        public static MurderAttemptResult checkMuderAttempt(PlayerControl killer, PlayerControl target, bool blockRewind = false, bool ignoreBlank = false, bool ignoreIfKillerIsDead = false) {
+        public static MurderAttemptResult checkMuderAttempt(PlayerControl killer, PlayerControl target, bool blockRewind = false) {
             var targetRole = RoleInfo.getRoleInfoForPlayer(target, false).FirstOrDefault();
 
             // Modified vanilla checks
             if (AmongUsClient.Instance.IsGameOver) return MurderAttemptResult.SuppressKill;
-            if (killer == null || killer.Data == null || (killer.Data.IsDead && !ignoreIfKillerIsDead) || killer.Data.Disconnected) return MurderAttemptResult.SuppressKill; // Allow non Impostor kills compared to vanilla code
+            if (killer == null || killer.Data == null || killer.Data.IsDead || killer.Data.Disconnected) return MurderAttemptResult.SuppressKill; // Allow non Impostor kills compared to vanilla code
             if (target == null || target.Data == null || target.Data.IsDead || target.Data.Disconnected) return MurderAttemptResult.SuppressKill; // Allow killing players in vents compared to vanilla code
 
             // Handle first kill attempt
-            if (TORMapOptions.shieldFirstKill && TORMapOptions.firstKillPlayer == target) return MurderAttemptResult.SuppressKill;
+            if (MapOptions.shieldFirstKill && MapOptions.firstKillPlayer == target) return MurderAttemptResult.SuppressKill;
 
             // Handle blank shot
-            if (!ignoreBlank && Pursuer.blankedList.Any(x => x.PlayerId == killer.PlayerId)) {
+            if (Pursuer.blankedList.Any(x => x.PlayerId == killer.PlayerId)) {
                 MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(CachedPlayer.LocalPlayer.PlayerControl.NetId, (byte)CustomRPC.SetBlanked, Hazel.SendOption.Reliable, -1);
                 writer.Write(killer.PlayerId);
                 writer.Write((byte)0);
@@ -435,11 +412,11 @@ namespace TheOtherRoles {
             return MurderAttemptResult.PerformKill;
         }
 
-        public static MurderAttemptResult checkMurderAttemptAndKill(PlayerControl killer, PlayerControl target, bool isMeetingStart = false, bool showAnimation = true, bool ignoreBlank = false, bool ignoreIfKillerIsDead = false)  {
+        public static MurderAttemptResult checkMurderAttemptAndKill(PlayerControl killer, PlayerControl target, bool isMeetingStart = false, bool showAnimation = true)  {
             // The local player checks for the validity of the kill and performs it afterwards (different to vanilla, where the host performs all the checks)
             // The kill attempt will be shared using a custom RPC, hence combining modded and unmodded versions is impossible
 
-            MurderAttemptResult murder = checkMuderAttempt(killer, target, isMeetingStart, ignoreBlank, ignoreIfKillerIsDead);
+            MurderAttemptResult murder = checkMuderAttempt(killer, target, isMeetingStart);
             if (murder == MurderAttemptResult.PerformKill) {
                 MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(CachedPlayer.LocalPlayer.PlayerControl.NetId, (byte)CustomRPC.UncheckedMurderPlayer, Hazel.SendOption.Reliable, -1);
                 writer.Write(killer.PlayerId);
@@ -482,20 +459,6 @@ namespace TheOtherRoles {
             return false;
         }
 
-        public static bool isKiller(PlayerControl player) {
-            return player.Data.Role.IsImpostor || 
-                (isNeutral(player) && 
-                player != Jester.jester && 
-                player != Arsonist.arsonist && 
-                player != Vulture.vulture && 
-                player != Lawyer.lawyer && 
-                player != Pursuer.pursuer);
-
-        }
-
-        public static bool isEvil(PlayerControl player) {
-            return player.Data.Role.IsImpostor || isNeutral(player);
-        }
 
         public static bool zoomOutStatus = false;
         public static void toggleZoom(bool reset=false) {
@@ -507,37 +470,30 @@ namespace TheOtherRoles {
                 if (cam != null && cam.gameObject.name == "UI Camera") cam.orthographicSize = orthographicSize;  // The UI is scaled too, else we cant click the buttons. Downside: map is super small.
             }
 
-            if (HudManagerStartPatch.zoomOutButton != null) {
-                HudManagerStartPatch.zoomOutButton.Sprite = zoomOutStatus ? Helpers.loadSpriteFromResources("TheOtherRoles.Resources.PlusButton.png", 75f) : Helpers.loadSpriteFromResources("TheOtherRoles.Resources.MinusButton.png", 150f);
-                HudManagerStartPatch.zoomOutButton.PositionOffset = zoomOutStatus ? new Vector3(0f, 3f, 0) : new Vector3(0.4f, 2.8f, 0);
-            }
+            HudManagerStartPatch.zoomOutButton.Sprite = zoomOutStatus ? Helpers.loadSpriteFromResources("TheOtherRoles.Resources.PlusButton.png", 75f) : Helpers.loadSpriteFromResources("TheOtherRoles.Resources.MinusButton.png", 150f);
+            HudManagerStartPatch.zoomOutButton.PositionOffset = zoomOutStatus ? new Vector3(0f, 3f, 0) : new Vector3(0.4f, 2.8f, 0);
             ResolutionManager.ResolutionChanged.Invoke((float)Screen.width / Screen.height); // This will move button positions to the correct position.
         }
 
-        public static async Task checkBeta() {
+        public static void checkBeta() {
             if (TheOtherRolesPlugin.betaDays > 0) {
-                TheOtherRolesPlugin.Logger.LogMessage($"Beta check");
                 var compileTime = new DateTime(Builtin.CompileTime, DateTimeKind.Utc);  // This may show as an error, but it is not, compilation will work!
-                DateTime? now;
-                // Get time from the internet, so no-one can cheat it (so easily).
+                DateTime now;
+                // Get time from the internet, so no-one can cheat it.
                 try {
-                    var client = new System.Net.Http.HttpClient();
-                    using var response = await client.GetAsync("http://www.google.com/");
-                    if (response.IsSuccessStatusCode)
-                        now = response.Headers.Date?.UtcDateTime;
-                    else {
-                        TheOtherRolesPlugin.Logger.LogMessage($"Could not get time from server: {response.StatusCode}");
-                        now = DateTime.UtcNow; //In case something goes wrong. 
-                    }
-                } catch (System.Net.Http.HttpRequestException) {
-                    now = DateTime.UtcNow;
+                    using (var response =
+                      WebRequest.Create("http://www.google.com").GetResponse())
+                        now = DateTime.ParseExact(response.Headers["date"], "ddd, dd MMM yyyy HH:mm:ss 'GMT'", CultureInfo.InvariantCulture.DateTimeFormat, DateTimeStyles.AssumeUniversal);
+                } catch (WebException e) {
+                    TheOtherRolesPlugin.Logger.LogMessage($"{e}");
+                    now = DateTime.Now; //In case something goes wrong. 
                 }
-                if ((now - compileTime)?.TotalDays > TheOtherRolesPlugin.betaDays) {
+                if ((now - compileTime).TotalDays > TheOtherRolesPlugin.betaDays) {
                     TheOtherRolesPlugin.Logger.LogMessage($"Beta expired!");
-                    BepInExUpdater.MessageBoxTimeout(BepInExUpdater.GetForegroundWindow(), "BETA is expired. You cannot play this version anymore.", "The Other Roles Beta", 0,0, 10000);
+                    BepInExUpdater.MessageBox(IntPtr.Zero, "BETA is expired. You cannot play this version anymore.", "The Other Roles Beta", 1);
                     Application.Quit();
 
-                } else TheOtherRolesPlugin.Logger.LogMessage($"Beta will remain runnable for {TheOtherRolesPlugin.betaDays - (now - compileTime)?.TotalDays} days!");
+                } else TheOtherRolesPlugin.Logger.LogMessage($"Beta will remain runnable for {(DateTime.Now - compileTime).TotalDays - TheOtherRolesPlugin.betaDays} days!");
             }
         }
 

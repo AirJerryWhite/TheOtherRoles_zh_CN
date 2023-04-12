@@ -57,7 +57,6 @@ namespace TheOtherRoles.Objects {
             }
             traps = new List<Trap>();
             trapPlayerIdMap = new Dictionary<byte, Trap>();
-            instanceCounter = 0;
         }
 
         public static void clearRevealedTraps() {
